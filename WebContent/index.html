@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="UTF-8">
+<link href="css/carregamento.css" rel="stylesheet">
+<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/principal.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap-4/bootstrap.css"></link>
+<title>Detector de Mentiras</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class='greetings flex-container'>
+			<div class='title midFlex'>
+				<h1>Detector de mentiras</h1>
+				<h2>Você consegue enganar nossa máquina?</h2>
+				<hr>
+			</div>
+			<div class='midFlex'>
+				<img alt="detector-de-imagens" src="imagens/logo_ufpr.png">
+			</div>
+		</div>
+		<div class='explanation'>
+			<!-- 			<h1 style='margin-top: 1em; text-align: center; color: #FF4500;'> -->
+			<!-- 				Seja bem-vindo ao teste e treino da máquina detectora de mentiras! -->
+			<!-- 			</h1> -->
+			<!-- 			<p class='hover' > -->
+			<!-- 				Receba nossas boas vindas ao teste e treino da máquina  -->
+			<!-- 				detectora de mentiras desenvolvida por estudantes da Universidade Federal do Paraná, -->
+			<!-- 				feita com técnicas de inteligência artificial e aprendizado de máquina. -->
+			<!-- 			</p> -->
+			<!-- 			<hr style='border-color: #212529;' > -->
+			<br />
+			<div class='cartao information'>
+				<div class='content'>
+					<h1
+						style='margin-top: 1em; margin-bottom: 1em; text-align: center; color: #FF4500;'>
+						Seja bem-vindo ao teste e treino da máquina detectora de mentiras!
+					</h1>
+					<p>Este teste é uma aplicação da inteligência artificial e
+						tecnologias computacionais modernas em uma versão adaptada do
+						“teste de associação de palavras” (JUNG, C. G. Estudos
+						experimentais. 3. ed. Petrópolis: Vozes, 2012) que tem como
+						objetivo experimentar e implementar técnicas computacionais de
+						interação com o usuário e coletar dados experimentais. Aqui
+						apresentaremos uma história para você e depois aplicamos o teste
+						para que nossa Inteligência Artificial tente descobrir qual o seu
+						papel nela. E nós desafiamos você a enganá-la!</p>
+				</div>
+				<div class='footer flex-container'>
+					<div style='align-self: flex-end;' >
+						<a href="termos.html"
+							class="btn btn-light btn-xl js-scroll-trigger prosseguir"> <span
+							class="glyphicon glyphicon-chevron-right"></span> PROSSEGUIR
+						</a>
+					</div>
+				</div>
+			</div>
+				<p style='font-size: 0.6em; text-align: right;' >*Este teste tem uma duração estimada de 20 minutos e requer
+					som e microfone.</p>
+		</div>
+
+	</div>
+
+	<br />
+	<script>
+		var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if (!is_chrome)
+			do {
+				alert("É necessário utilizar o navegador Chrome.");
+				alert("Por favor, utilize outro navegador.");
+			} while (!is_chrome);
+	</script>
+</body>
+</html>

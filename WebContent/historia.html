@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Detector de Mentiras</title>
+	<style>
+		#historia{
+			position:fixed;
+			right: 0; bottom: 0;
+			width: 100%;
+			background: url(polina.jpg) no-repeat;
+			background-size: cover; 
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+	<video id="historia" controls>
+	  <source src="h1_x264.mp4" type="video/mp4" />
+		Seu navegador não suporta a execução do vídeo.
+	</video> 
+	</div>
+</body>
+
+<script>
+	var historia;
+	var idHistoria;
+	var t= Math.floor(Math.random() * 10);
+	
+	if(t<3){ 
+		historia = "videos/espiao_x264.mp4"; 
+		idHistoria=1;
+	}else{
+		if(t<6){ 
+			historia = "videos/ladrao_x264.mp4";
+			idHistoria=2;
+		} else{
+			historia = "videos/testemunha_x264.mp4";
+			idHistoria=3;
+		}
+	}
+	
+	var elem = document.getElementById("historia");
+	elem.src=historia;
+	elem.autoplay=true;
+	elem.onended= function(){
+								const http = new XMLHttpRequest()
+								http.open("GET", "testes?idHistoria="+idHistoria,true)
+								http.send()
+								window.location.replace("teste.html");
+							};
+							
+</script>
+
+</html> 

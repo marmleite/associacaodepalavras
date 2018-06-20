@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<title>Detector de mentiras</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.field {
+	width: 100%;
+}
+
+.label {
+	width: 100%;
+}
+
+label {
+	/*background: green;*/
+	border-bottom-color: green;
+	border-radius: 1em;
+	width: 100%;
+	padding: 1em;
+}
+
+#resultRecording {
+	width: 90%;
+	border-radius: 1em;
+	padding: 1em;
+}
+</style>
+<link href="css/carregamento.css" rel="stylesheet">
+<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/principal.css" rel="stylesheet">
+<script src='js/SpeechRecognition/Lib/jquery.min.js' type='text/javascript'></script>
+<script src='css/bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/DateTime.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/SpeechApi.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/Sender.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/MounterAudios.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/Speech.js' type='text/javascript'></script>
+<script src='js/SpeechRecognition/geral.js' type='text/javascript'></script>
+</head>
+<body>
+
+	
+	<div id='fundoVideo' class='fundo' style='display: none;' >
+		<div id='video'  >
+			<video id='videoEstoria' controls onended='javascript:iniciarPalavras();' >
+				<source id='sourceEstoria' src='' ></source>
+			</video>
+		</div>
+	</div>
+
+	<div class='container' id='containerPrincipal' >
+
+		<div id='testePerifericos'>
+
+			<!-- Modal -->
+			<div class="modal fade" id="redirecionamento" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Conteúdo da modal de redireciomento-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" style='color: red;' class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><span class="glyphicon glyphicon-ok" style='margin-right: 1em; color: green; font-size: 1.3em;' ></span>Perfeito!!!</h4>
+						</div>
+						<div class="modal-body">
+							<p>Seus periféricos estão funcionando corretamente. Você será direcionado para as
+							 instruções do detector clicando em ok</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" style='color: green;'
+								data-dismiss="modal"
+								onclick='javascript: redirecionarParaDetector();'>OK</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div>
+				<h1>Teste de periféricos</h1>
+				<p>Antes de começarmos o teste precisamos saber se está tudo ok
+					com seus periféricos(auto-falantes e microfone).</p>
+				<p>Por isso precisamos que você realize o teste abaixo para
+					garantirmos que nada de errado aconteça no teste.</p>
+			</div>
+			<div>
+				<div class='periferico' id='perifericoAutoFalante'>
+					<h4>Clique no play para testar seu alto-falante</h4>
+					<audio id='audioDeTeste' controls
+						onended='javascript:onEndedTesteAudio();'>
+						<source src="audios/cabelo.mp3">
+					</audio>
+					<div id='responseAudio' style='display: none;'>
+						<p>Entendeu o que foi dito?</p>
+						<a onclick='onOkAudio();'> <span
+							style='font-size: 2em; color: green; margin-right: 1em;'
+							class="glyphicon glyphicon-thumbs-up"></span>
+						</a>
+						<a onclick='onNonOkAudio();'> <span
+							style='font-size: 2em; color: red;'
+							class="glyphicon glyphicon-thumbs-down"> </span>
+						</a>
+					</div>
+					<div class='expansible' id='dicasAudioPeriferico' style='display: none; margin-top: 30px;' onclick='expansible(this, $("#solucoes"))'>
+						<div class='expansible-header'>
+							<p style='display: flex;' ><span class="glyphicon glyphicon-volume-off" style='display: block; margin-right: 1em; color: red; font-size: 1.3em;' ></span>Possíveis soluções para seu problema</p>
+						</div>
+						<div id='solucoes' class='expansible-content' >
+							<ul > <!-- class='list-group' > -->
+	  							<li>Verifique o volume do seu computador</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class='periferico' id='perifericoMicrofone' style='display: none'>
+					<h3>Teste de microfone</h3>
+					<p>Agora vamos testar a entrada de som. Clique no play e fale
+						em tom audível a mesma palavra que você ouviu no teste de
+						auto-falante
+					</p>
+					<div class='flex-container' >
+						<div>
+							<button type="button" class="btn btn-default btn-sm" onclick='javascript:testarMicrofone();' style='color: green;' >
+								<span class="glyphicon glyphicon-play-circle" ></span> Play
+							</button>
+							<button type="button" class="btn btn-default btn-sm" onclick='onHearAgain();' style='color: blue;' >
+								<span class="glyphicon glyphicon-volume-up" ></span> Ouvir novamente
+							</button>
+						</div>
+						<div  class='col-sm-2' id='imageRecordingTest' style='width: 1px; display: none; margin-right: 4px;' >
+							<img style='width: 25px;' alt="recording" src="recording.gif">
+						</div>
+					</div>
+					<div class='expansible' id='dicasMicrofonePeriferico' style='display: none; margin-top: 30px;' onclick='expansible(this, $("#solucoesMicrofone"))'>
+						<div class='expansible-header'>
+							<p style='display: flex;' ><span class="glyphicon glyphicon-volume-off" style='display: block; margin-right: 1em; color: red; font-size: 1.3em;' ></span>Possíveis soluções para seu problema</p>
+						</div>
+						<div id='solucoesMicrofone' class='expansible-content' >
+							<ul>
+	  							<li>Caso apareça uma mensagem de permissão para acesso ao microfone, aceite.</li>
+	  							<li>Verifique a sua conexão com a internet</li>
+	  							<li>Verifique o volume do seu microfone</li>
+	  							<li>Aperte o play e tente novamente</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal Início do teste -->
+		<div class="modal fade" id="inicioDetector" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Conteúdo da modal de início do teste-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" style='color: red;' class="close" data-dismiss="modal">&times;</button>
+						<div>
+							<h4 style='display: flex;' >
+								<span class="glyphicon glyphicon-exclamation-sign" style='display: block; margin-right: 1em; color: red; font-size: 1.3em;' ></span>
+								Instruções para o teste
+							</h4>
+						</div>
+					</div>
+					
+					<div class="modal-body">
+						<h4>O teste funcionará da seguinte forma:</h4>
+						<ul >
+							<li>Primeiramente você assistirá a um vídeo que te introduzirá na estória</li>
+	  						<li>Após o término o teste começara e você ouvirá uma palavra</li>
+	  						<li>Logo após você verá o <img style='width: 15px;' alt="recording" src="recording.gif">
+	  						e então você terá 5 segundos para responder a primeira palavra que lhe vêm a mente
+	  						</li>
+	  						<li>Responda com apenas uma palavra em tom audível e bem pronunciado</li>
+	  						<li>Após a pronúncia da palavra, ou após os 5 segundos, caso você não responda, nós iremos para a 
+	  						próxima palavra e o ciclo será o mesmo</li>
+	  						<li>Após a primeira rodada de palavras, será iniciada a segunda e última fase, na qual você ouvirá
+	  						novamente as mesmas palavras e deve tentar se lembrar de cada uma das suas respostas.</li>
+						</ul>
+										
+						<p>Estamos prontos para iniciar o detector. Quando se sentir
+							preparado respire fundo e clique em iniciar</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							onclick='javascript: iniciarDetector();' style='color:green;' >Iniciar</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div id='instrucoesTeste' class="modal-content" style='display: none;'>
+			<div class="modal-header">
+				<button type="button" style='color: red;' class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><span class="glyphicon glyphicon-ok" style='margin-right: 1em; color: green; font-size: 1.3em;' ></span>Perfeito!!!</h4>
+			</div>
+			<div class="modal-body">
+				<p>Seus periféricos estão funcionando corretamente. Você será direcionado para as
+					instruções do detector clicando em ok</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+					data-dismiss="modal"
+					onclick='javascript: redirecionarParaDetector();'>OK</button>
+			</div>
+		</div>
+
+		<div id='testeMentira' style='display: none;'>
+			<div id='response'>
+			</div>
+		</div>
+		<div id='imageRecording' style='width: 100px; display: none; margin-left: -50px; margin-top: -50px;' >
+			<img style='width: 100%;' alt="recording" src="recording.gif">
+		</div>
+		<div id='loaderResponse' style='display: none; width: 80px; margin-left: -40px; margin-top: -40px;'>
+			<div class="loader"></div>
+			<div id='mensagemLoaderResponse' ><spam>Por favor aguarde. Estamos analisando suas respostas e logo chegaremos a um veredito final.</spam></div>
+		</div>
+<!-- 		<div id='mensagemLoaderResponse' style='display: none;' ><spam>Por favor aguarde. Estamos analisando suas respostas e logo chegaremos a um veredito final.</spam></div> -->
+
+	</div>
+	
+	<div id='resultado' style='display: none;'>
+		<h4 id='strResult'></h4>
+	</div>
+	
+	
+
+	<!-- Modal de erros -->
+	<div class="modal fade error" id="modalError" role="dialog">
+		<div class="modal-dialog">
+			<!-- Conteúdo da modal de início do teste-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" style='color: red;' class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" id='titleError' ></h4>
+				</div>
+				<div class="modal-body" id='messageError' >
+				</div>
+				<div class="modal-footer" id='footerError' style='display: block;' >
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</body>
+</html>

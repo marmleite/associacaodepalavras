@@ -1,0 +1,18 @@
+@font-face {
+	font-family : modsans;
+	src : url('fonts/modern_sans_light.otf');
+}
+
+@font-face {
+	font-family : jonah;
+	src : url('fonts/Jonah-Regular.ttf');
+}
+
+@font-face {
+	font-family : caviardreams;
+	src : url('fonts/caviardreams.ttf';)
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: caviardreams !important;
+}

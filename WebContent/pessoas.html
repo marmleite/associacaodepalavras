@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link href="css/carregamento.css" rel="stylesheet">
+<!-- 	<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="css/principal.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-4/bootstrap.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="css/bootstrap-4/bootstrap.js"></script>
+	<title>Detector de Mentiras</title>
+</head>
+
+<body>
+	
+	<div class="container">
+	<br/>
+	<br/>
+	<h2>Por favor, insira seus dados: </h2>
+
+	<form method="POST" action="pessoas">
+		<div class="form-group">
+			<label for="dataNascimento">Data de nascimento:</label> 
+			<input type="date" id="dataNascimento" name="dataNascimento" class="form-control col-md-2" required="required">
+		</div>
+		<div class="form-group">
+			<label for="idSocioeconomico">Renda familiar per capita:</label>
+			<select id="idSocioeconomico" name="idSocioeconomico" class="form-control" required="required"> 
+				<option  value=""> -- Selecione -- </option> 
+				<option value="1">até 1 salario mínimo</option> 
+				<option value="2">de 1 a 2 salários mínimos</option> 
+				<option value="3">de 2 a 3 salários mínimos</option> 
+				<option value="4">de 3 a 4 salários mínimos</option> 
+				<option value="5">de 4 a 5 salários mínimos</option> 
+				<option value="6">de 5 a 6 salários mínimos</option> 
+				<option value="7">de 6 a 7 salários mínimos</option> 
+				<option value="8">de 7 a 8 salários mínimos</option> 
+				<option value="9">de 8 a 9 salários mínimos</option> 
+				<option value="10">de 9 ou mais salários mínimos</option> 
+			</select>
+			<small id="idSocioeconomicoHelp" class="form-text text-muted">(Soma do que todos os moradores da casa ganham, dividido pelo número de moradores)</small>
+		</div>
+
+		<div class="form-group">
+			<label for="idEscolaridade">Escolaridade:</label>
+			<select id="idEscolaridade" name="idEscolaridade" class="form-control" required="required"> 
+				<option  value=""> -- Selecione -- </option> 
+				<option value="1">Sem estudo formal</option> 
+				<option value="2">Fundamental incompleto</option> 
+				<option value="3">Fundamental completo</option> 
+				<option value="4">Médio incompleto</option> 
+				<option value="5">Médio completo</option> 
+				<option value="6">Superior incompleto</option> 
+				<option value="7">Superior completo</option> 
+				<option value="8">Pós graduação</option> 
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="idSexo">Sexo:</label> 
+			<select name="idSexo" id="idSexo" class="form-control" required="required"> 
+				<option value=""> -- Selecione -- </option> 
+				<option value="1">Masculino</option> 
+				<option value="2">Feminino</option> 
+				<option value="3">Outros/Prefiro não declarar</option> 
+			</select>
+		</div>
+
+		<div class="form-group">
+			<input type="submit"  class="btn btn-primary" name="enviar" value="Continuar" />
+		</div>
+	</form>
+	
+	<div class='caixaTexto' >
+		<p>Coletamos estas informações somente para propósitos de melhoria no resultado do software.</p>
+	
+	</div>
+
+	</div>
+	
+</body>
+
+</html> 

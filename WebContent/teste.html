@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    	<script src='js/SpeechRecognition/DateTime.js' type='text/javascript'></script>
+        <script src='js/SpeechRecognition/DateTime.js' type='text/javascript'></script>
+        <script src='js/SpeechRecognition/SpeechApi.js' type='text/javascript'></script>
+        <script src='js/SpeechRecognition/Lib/jquery.min.js' type='text/javascript'></script>
+        <script src='js/SpeechRecognition/Sender.js' type='text/javascript'></script>
+        <script src='js/SpeechRecognition/MounterAudios.js' type='text/javascript'></script>
+		<script src='js/SpeechRecognition/Speech.js' type='text/javascript'></script>
+
+<meta charset="UTF-8">
+<title>Detector de Mentiras</title>
+</head>
+<body>
+
+<center><img src="39.gif" id="imagem"></center>
+
+<div>
+	<textarea id="resultRecording" style="display: none;">
+	    
+	</textarea>
+</div>
+
+<div>
+	<textarea id="resultRecording2" style="display: none;">
+	    
+	</textarea>
+</div>
+</div>
+<button onclick="funcao()" id='record' style="display: none;" >quando a pessoa falar...</button>
+<div id='response' >
+			
+</div>
+</body>
+
+<script>
+function funcao(){
+var x = document.getElementById("imagem");
+if(x.src == "file:///C:/Users/cleve/OneDrive/Documentos/Computa%C3%A7%C3%A3o/TCC/7.gif") {x.src="39.gif";} else {x.src="7.gif";}
+}
+
+</script>
+
+</html>

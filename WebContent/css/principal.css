@@ -1,0 +1,171 @@
+.periferico {
+	padding: 2em;
+	border: 1px solid;
+	border-radius: 1em;
+	margin-bottom: 1em;
+}
+
+.greetings {
+/* 	background-color: #428bca; */
+/* 	color: white; */
+	padding: 2em;
+}
+
+.greetings .title {
+	padding: 4em;
+}
+
+.title h1 {
+	font-size: 4em;
+}
+
+.explanation {
+	padding: 1em 0 0 0;
+	font-size: 2em;
+}
+
+.flex-container {
+	display: flex;
+}
+
+.flex-container .midFlex {
+	width: 50%;
+}
+
+.error.modal .modal-content .modal-header {
+	color: red;
+}
+
+.expansible {
+	border: 1.4px solid #ddd;
+}
+
+html,body{
+    width: 100%;
+    height:100%;
+}
+
+p.hover:hover{
+	background-color: #f8f9fa;
+}
+
+.fundo {
+	position: relative;
+	width: 100%;
+/* 	height: 100%; */
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#video {
+	position: relative;
+	left: 8%;
+	top: 8%;
+	width: 92%;
+	
+}
+
+#videoEstoria {
+	display: block;
+	position: relative;
+	width: 92%;
+}
+
+.cartao {
+	padding: 0;
+	border: 1px solid #ddd;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	margin-bottom: 7px;
+}
+
+.cartao .content {
+	padding: 1em;
+	background-color: #ffffff;
+}
+
+.cartao .footer {
+	padding: 1em;
+	background-color: #428bca;
+}
+
+.cartao.information {
+	font-size: 0.8em;
+}
+
+video {
+/*     object-fit: contain; */
+}
+
+#video {
+/*     position: fixed; */
+/*     right: 0; */
+/*     bottom: 0; */
+/*     width: 100%; */
+/*     background: url(polina.jpg) no-repeat; */
+/*     background-size: cover; */
+}
+
+.expansible .expansible-header {
+	font-size: 1.2em;
+	padding: 0.6em 0.5em 0.2em 1em;
+	border-bottom: 1px solid #ddd;
+}
+
+.expansible .expansible-content {
+	padding: 0.7em 0.5em 0.2em 1em;
+}
+
+#imageRecording {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+#loaderResponse {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn.prosseguir {
+	padding: 1em;
+	border-radius: 20px;
+}
+
+#resultado {
+	font-size: 1.5em;
+	padding: 1em;
+	border-radius: 10px;
+	border: 1px solid #000;
+}
+
+.caixaTexto {
+	font-size: 0.8em;
+	padding: 1em;
+	border-radius: 10px;
+	border: 1px solid #000;
+}
+
+
+
+
