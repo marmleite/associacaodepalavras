@@ -1,6 +1,9 @@
 # associacaodepalavras
 Projeto entregue como Trabalho de Conclusão de Curso para o curso de graduação Tecnologia em Análise e Desenvolvimento de Sistema da Universidade Federal do Paraná.
 
+O projeto é uma versão automatizada do teste psicológico de associação de palavras. O foco foi utilizar tecnologias modernas para aplicá-lo e fazer com que este identifique qual dentre três papéis foi inicialmente atribuído a um sujeito experimental. Para tanto, foi  feito o uso de conceitos de ludificação para tentar aumentar o engajamento do usuário ao teste, assemelhando-o em sua proposta a um jogo que o desafia a enganar a correção automatizada, utilizando uma api de reconhecimento de voz para capturar as respostas do sujeito e o tempo de reação aos estímulos realizados através de palavras pronunciadas pelo sistema. Estes dados são submetidos a uma rede neural artificial para que esta realize a sugestão de qual seria o papel do sujeito. Possui uma interface gráfica para permitir a análise de dados dos testes de forma ágil, imediata e comparativa. Com isso procura-se demonstrar a utilização de um sistema computacional como alternativa à resolução do problema da complexidade apresentado pelo teste psicológico e como este pode auxiliar na pesquisa científica e análise de seus resultados.
+
+
 Instalação da versão automatizada do teste de associação de palavras:
 
 Antes de realizar a instalação completa do sistema, você deverá ter um servidor capaz de lidar com um programa em java/web e programa em R/Shinny (podendo ser dois separados) e se atentar para a compatibilidade entre a versão atual da biblioteca speech recognition (https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) com a versão utilizada no projeto (de 21/5/2018).
